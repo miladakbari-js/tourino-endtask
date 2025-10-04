@@ -1,0 +1,82 @@
+.container {
+    border: 1px solid var(--color-text2);
+    border-radius: 18px;
+    height: 70px;
+    margin:50px auto;
+    width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+
+.container > * {
+  /* flex: 1; */
+  min-width: 150px;
+}
+
+
+.datepicker_button {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.datepicker_button img {
+  width: 16px;
+  height: 16px;
+}
+
+
+.search_button {
+  width: 140px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.search_button:hover {
+  box-shadow: 1px 1px 5px 1px var(--color-text);
+}
+
+
+@media (max-width: 390px) {
+  .container {
+    width: 390px;
+    height: fit-content;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+  }
+
+  .container > :nth-child(1),
+  .container > :nth-child(2) {
+    grid-column: span 1;
+  }
+
+
+  .container > :nth-child(3),
+  .container > :nth-child(4) {
+    grid-column: span 2;
+  }
+  .search_button{
+    width: 100%;
+  }
+}
