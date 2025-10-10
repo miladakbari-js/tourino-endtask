@@ -1,0 +1,130 @@
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.name,
+.melli,
+.sheba {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.name div,
+.melli div {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  height: 25px;
+}
+.name p,
+.melli p {
+  width: 180px;
+  text-align: right;
+}
+
+.edit_list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.edit_list input,
+.edit_list select {
+  width: 200px;
+  height: 35px;
+  border: 1px solid var(--color-text2);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 13px;
+  color: var(--color-text2);
+}
+
+.buttons {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.edit_button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  font-size: 12px;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-complementry);
+}
+.edit_button img {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+}
+.enter_button {
+  width: 144px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+}
+.enter_button:hover {
+  box-shadow: 1px 1px 5px 1px var(--color-text);
+}
+.cancel_button {
+  width: 144px;
+  height: 40px;
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  background-color: #fff;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+.cancel_button:hover {
+  box-shadow: 1px 1px 5px 1px var(--color-text);
+}
+
+.selectField {
+  position: relative;
+  width: 200px;
+  margin-top: 5px;
+}
+
+.selectField select {
+  border: 1px solid var(--color-text2);
+  background-color: transparent;
+  font-size: 13px;
+  appearance: none;
+  font-family: inherit;
+}
+
+.selectField label {
+  position: absolute;
+  top: -0.9em;
+  right: 12px;
+  font-size: 12px;
+  color: var(--color-text2);
+  background-color: white;
+  padding: 0 6px;
+  pointer-events: none;
+}
+
+.selectField select:focus + label {
+  color: var(--color-primary);
+}
+.error_message {
+  width: 120px;
+  height: 10px;
+  color: red !important;
+  font-size: 12px !important;
+}
+.melli_input {
+  display: flex;
+  flex-direction: column;
+}

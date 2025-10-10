@@ -1,0 +1,33 @@
+.container{
+    width: 1100px;
+    height: 570px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.right{
+    width: 400px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.right h2{
+    font-size: 36px;
+}
+.right a{
+    width: 300px;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    border-radius: 16px;
+    font-size: 25px;
+   color: var(--color-primary);
+    background-color:#D8FFE1;
+    transition: all 0.2s ease-in-out;
+}
+.right a:hover{
+   box-shadow: 1px 1px 10px 1px var(--color-text);
+}

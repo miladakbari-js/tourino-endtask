@@ -1,5 +1,6 @@
 :root{
     --color-primary:#28A745;
+    --color-select:rgba(149, 216, 165,25%);
     --color-secondary:#10411b;
     --color-complementry:#009eca;
     --color-text:#4b4b4b;
