@@ -1,0 +1,74 @@
+.container {
+  width: 500px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: #fff;
+}
+.head{
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+.head button{
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+.container h4{
+
+    font-size: 24px;
+    margin-bottom: 20px;
+   margin-right: 170px;
+}
+.mobile {
+  width: 80%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+    gap: 20px;
+
+}
+.inputs {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  
+}
+.inputs span{
+    font-size: 12px;
+    color: var(--color-text2);
+}
+.inputs input{
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid var(--color-text2);
+}
+.mobile button{
+    border: none;
+    background-color: var(--color-primary);
+    color: #fff;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+}
+.mobile button:hover{
+    box-shadow: 1px 1px 5px 1px var(--color-text);
+}

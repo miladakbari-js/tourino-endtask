@@ -4,8 +4,11 @@ import SearchBox from "@/components/modules/search/SearchBox";
 import AllTours from "@/components/templates/AllTours";
 import TellBanner from "@/components/templates/TellBanner";
 import styles from "../styles/Home.module.css";
+import { useState } from "react";
 
 export default function Home() {
+  const [searchTours , setSearchTours] = useState(null)
+
   const { data: tours, isLoading } = useQuery({
     queryKey: ["tours"],
     queryFn: fetchTours,
@@ -21,8 +24,8 @@ export default function Home() {
         <p>در حال بارگذاری ...</p>
       ) : (
         <div className={styles.components}>
-          <SearchBox tours={tours} />
-          <AllTours tours={tours} />
+          <SearchBox tours={tours} setSearchTours={setSearchTours}/>
+          <AllTours tours={searchTours ?? tours} />
           <TellBanner/>
         </div>
       )}

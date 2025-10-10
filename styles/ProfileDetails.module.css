@@ -1,0 +1,43 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.accunt_info {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-text2);
+  border-radius: 16px;
+  padding: 10px;
+}
+.accunt_info div {
+  display: flex;
+  
+}
+
+.personal_info span,
+.bank_info span {
+  font-size: 14px;
+  color: var(--color-text2);
+  margin-left: 20px;
+}
+.actions_accunt p {
+  font-size: 14px;
+}
+
+.personal_info,
+.bank_info {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--color-text2);
+  border-radius: 16px;
+  padding: 10px;
+}
+

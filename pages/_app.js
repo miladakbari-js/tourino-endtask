@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "@/styles/globals.css";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -10,6 +11,7 @@ export default function App({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <Layout>
         <Component {...pageProps} />
+        <Toaster position="top-center"/>
       </Layout>
       <ReactQueryDevtools/>
     </QueryClientProvider>
