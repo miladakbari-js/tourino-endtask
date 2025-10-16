@@ -1,0 +1,25 @@
+.container{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+}
+.box{
+   flex: 1;
+   padding: 10px 10px 10px 20px;
+   font-size: 12px;
+   font-weight: 600;
+}
+.box p{
+    width: 70px;
+    text-align: left;
+}
+@media (max-width : 390px){
+  .type{
+    display: none;
+  }
+  .box{
+    font-size: 9.5px;
+    
+  }
+}
+

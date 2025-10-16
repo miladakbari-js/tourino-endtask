@@ -1,11 +1,20 @@
+.container{
+  width: 100%;
+ display: flex;
+ flex-direction: column;
+}
 .actions_acount {
   width: 100%;
-  height: 200px;
+  height: 150px;
   padding: 20px;
   display: flex;
   justify-content: space-between;
 }
 .information {
+  height: 45px;
+  line-height: 45px;
+}
+.email_information {
   height: 45px;
   line-height: 45px;
 }
@@ -62,7 +71,6 @@
 }
 .actions_acount input {
   width: 250px;
-
   border: 1px solid var(--color-text2);
   padding: 10px;
   border-radius: 5px;
@@ -82,4 +90,40 @@
 }
 .cancel_button:hover {
   box-shadow: 1px 1px 5px 1px var(--color-text);
+}
+
+@media(max-width: 390px){
+.container{
+  width: 390px;
+  height: 200px;
+  
+}
+.actions_acount{
+  width: 390px;
+  flex-direction: column;
+  padding: 5px;
+}
+.information{
+  display: flex;
+  justify-content: space-between;
+}
+.information p{
+  font-size: 12px;
+}
+.email_information{
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.email_information p{
+  font-size: 12px;
+  width: fit-content;
+  height: fit-content;
+}
+.edit_button{
+  width: fit-content;
+  font-size: 11px;
+}
 }

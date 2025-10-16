@@ -1,5 +1,5 @@
 import { putProfile } from "@/services/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import styles from "@/styles/PersonalInfo.module.css";
@@ -8,7 +8,12 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import moment from "jalali-moment";
 
-export function PersonalInfo({ data, editPersonal, setEditPersonal }) {
+export function PersonalInfo({
+  data,
+  editPersonal,
+  setEditPersonal,
+
+}) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
@@ -16,6 +21,20 @@ export function PersonalInfo({ data, editPersonal, setEditPersonal }) {
   const [birthDate, setBirthDate] = useState(null);
   const [error, setError] = useState(false);
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (data) {
+      setFirstName(data.firstName || "");
+      setLastName(data.lastName || "");
+      setGender(data.gender || "");
+      setNationalCode(data.nationalCode || "");
+      setBirthDate(
+        data.birthDate
+          ? new Date(moment(data.birthDate, "YYYY-MM-DD").toDate())
+          : null
+      );
+    }
+  }, [data]);
 
   const toJalali = (date) => {
     if (!date) return "-";
@@ -31,9 +50,10 @@ export function PersonalInfo({ data, editPersonal, setEditPersonal }) {
       setError(true);
       return;
     }
+
     try {
       const birthDateGregorian = birthDate
-        ? birthDate.toDate().toISOString().split("T")[0]
+        ? birthDate.toISOString().split("T")[0]
         : "";
 
       await putProfile({
@@ -52,9 +72,10 @@ export function PersonalInfo({ data, editPersonal, setEditPersonal }) {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.title}>
         <h4>اطلاعات شخصی</h4>
+
         <button
           className={styles.edit_button}
           onClick={() => setEditPersonal(false)}
@@ -69,16 +90,16 @@ export function PersonalInfo({ data, editPersonal, setEditPersonal }) {
           <div className={styles.name}>
             <div>
               <span>نام</span>
-              <p>{data.firstName || "-"}</p>
+              <p>{data?.firstName || "-"}</p>
             </div>
             <div>
               <span>نام خانوادگی</span>
-              <p>{data.lastName || "-"}</p>
+              <p>{data?.lastName || "-"}</p>
             </div>
             <div>
               <span>جنسیت</span>
               <p>
-                {data.gender ? (data.gender === "male" ? "آقا" : "خانم") : "-"}
+                {data?.gender ? (data.gender === "male" ? "آقا" : "خانم") : "-"}
               </p>
             </div>
           </div>
@@ -86,11 +107,11 @@ export function PersonalInfo({ data, editPersonal, setEditPersonal }) {
           <div className={styles.melli}>
             <div>
               <span>کد ملی</span>
-              <p>{data.nationalCode || "-"}</p>
+              <p>{data?.nationalCode || "-"}</p>
             </div>
             <div>
               <span>تاریخ تولد</span>
-              <p>{toJalali(data.birthDate)}</p>
+              <p>{toJalali(data?.birthDate)}</p>
             </div>
           </div>
         </div>
@@ -170,6 +191,6 @@ export function PersonalInfo({ data, editPersonal, setEditPersonal }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

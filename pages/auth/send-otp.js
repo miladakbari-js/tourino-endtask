@@ -4,8 +4,9 @@ import styles from "@/styles/SendOtp.module.css";
 import toast from "react-hot-toast";
 
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+
 import { otpSchema } from "@/utils/schema";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 
 function SendOtp({ onOtpSent , onClose}) {

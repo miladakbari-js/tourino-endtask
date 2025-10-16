@@ -7,6 +7,9 @@ import {
   endDateFa,
   startDateFa,
 } from "@/utils/helpers";
+import { putBasket } from "@/services/auth";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 function details({ tourId }) {
   const {
@@ -17,12 +20,26 @@ function details({ tourId }) {
     queryKey: ["tour", tourId],
     queryFn: () => fetchToursById(tourId),
   });
+ 
+  const router = useRouter();
 
   const diffTime = new Date(tours?.endDate) - new Date(tours?.startDate);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
   if (isLoading) return <p>در حال بارگذاری...</p>;
   if (error) return <p>خطا در دریافت اطلاعات</p>;
+
+  const shoppingHandler =async (tourId)=>{
+   try {
+    const data = await putBasket(tourId);
+    toast.success(data.message)
+    router.push("/basket")
+   } catch (err) {
+    toast.error("خطا در عملیات رزرواسیون")
+   }
+   
+   
+  }
   return (
     <div className={styles.details_body}>
       <div className={styles.container}>
@@ -64,7 +81,7 @@ function details({ tourId }) {
                 {tours?.price} <span>تومان</span>
               </p>
 
-              <button>رزرو و خرید</button>
+              <button onClick={()=>shoppingHandler(tourId)}>رزرو و خرید</button>
             </div>
           </div>
         </div>

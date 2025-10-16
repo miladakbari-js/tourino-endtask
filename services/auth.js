@@ -35,18 +35,81 @@ const getProfile = async () => {
     return data;
   } catch (err) {
     console.log(err.message);
-    throw err;
+    return null;
   }
 };
 
-const putProfile = async ( body) => {
+const putProfile = async (body) => {
   try {
-    const { data } = await api.put("/user/profile", body );
-    return data
+    const { data } = await api.put("/user/profile", body);
+    return data;
   } catch (err) {
     console.log(err.message);
     throw err;
   }
 };
 
-export { sendOtp, checkOtp, refreshToken, getProfile , putProfile };
+const getBasket = async () => {
+  try {
+    const { data } = await api.get("/basket");
+    return data;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+const putBasket = async (tourId) => {
+  try {
+    const { data } = await api.put(`/basket/${tourId}`);
+    return data;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+const orderTour = async (form) => {
+  try {
+    const { data } = await api.post("/order",form);
+    return data;
+  } catch (err) {
+    console.log(err.message);
+    throw err;
+  }
+};
+
+
+const getMyTours = async()=>{
+  try {
+    const {data} = await api.get("/user/tours");
+    console.log(data);
+    return data
+  } catch (err) {
+    console.log(err);
+    throw err
+  }
+}
+
+const getTransactions = async () =>{
+  try {
+    const {data} = await api.get("/user/transactions");
+    return data
+  } catch (err) {
+    console.log(err);
+    throw err
+  }
+}
+
+export {
+  sendOtp,
+  checkOtp,
+  refreshToken,
+  getProfile,
+  putProfile,
+  getBasket,
+  putBasket,
+  orderTour,
+  getMyTours,
+  getTransactions
+};

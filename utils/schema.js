@@ -24,3 +24,15 @@ export const emailSchema = yup.object().shape({
     .email("ایمیل وارد شده معتبر نیست"),
 });
 
+export const travellerSchema = yup.object().shape({
+  fullName: yup
+    .string()
+    .required("نام و نام خانوادگی الزامی است")
+    .min(5, "تعداد کاراکتر باید بیشتر از 5 باشد"),
+  gender: yup.string().required("جنسیت خود را انتخاب کنید"),
+  nationalCode: yup
+    .string()
+    .required("کد ملی الزامی است")
+    .length(10, "کد ملی نامعتبر است."),
+  birthDate: yup.string().required("تاریخ تولد الزامی است"),
+});
