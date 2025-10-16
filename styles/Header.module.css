@@ -54,12 +54,12 @@
   padding: 10px;
   gap: 15px;
 }
-.signin_button{
+.signin_button {
   width: 40px;
   height: 40px;
   display: none;
 }
-.signin_button_wrapper{
+.signin_button_wrapper {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -87,14 +87,12 @@
   justify-content: center;
   gap: 6px;
   border-radius: 8px;
-  
   color: var(--color-primary);
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   background-color: #fff;
 }
-
 
 .arrowIcon {
   width: 16px;
@@ -155,11 +153,11 @@
   background-color: #f8f8f8;
 }
 
-.inlineProfile{
+.inlineProfile {
   display: flex;
   align-items: center;
 }
-.inlineProfile img{
+.inlineProfile img {
   margin-right: 15px;
   width: 20px;
   height: 20px;
@@ -167,8 +165,11 @@
   border-radius: 50%;
 }
 
-/* موبایل */
 @media (max-width: 390px) {
+  .container{
+    min-width: 390px;
+   
+  }
   .profileLoggedIn {
     width: auto;
     padding: 0 8px;
@@ -181,25 +182,23 @@
     top: 45px;
     width: 160px;
   }
-}
 
-@media (max-width: 390px) {
   .logo {
     display: none;
   }
   .menuItem {
     display: none;
   }
-.container{
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-.profile {
-  display: none;
-}
-.signin_button{
-  display: flex;
-}
+  .container {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .profile {
+    display: none;
+  }
+  .signin_button {
+    display: flex;
+  }
 
   .hamburger {
     display: flex;

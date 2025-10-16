@@ -128,3 +128,32 @@
   display: flex;
   flex-direction: column;
 }
+.basket_page {
+  display: flex;
+  align-items: center;
+}
+.basket_page h4 {
+  font-size: 20px;
+}
+.basket_page img {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+@media (max-width: 390px) {
+  .container {
+    min-width: 390px;
+    height: fit-content;
+    padding: 5px;
+  }
+  .bottom {
+    background-color: azure;
+    flex-direction: column;
+  }
+  .name,
+  .melli,
+  .sheba {
+  gap: 10px;
+  }
+}

@@ -5,9 +5,10 @@ import Modal from "../ui/Modal";
 import SendOtp from "@/pages/auth/send-otp";
 import CheckOtp from "@/pages/auth/check-otp";
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import {  useQuery, useQueryClient } from "@tanstack/react-query";
 import { getProfile } from "@/services/auth";
 import { getCookie } from "@/utils/cookie";
+import { useRouter } from "next/router";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,17 +16,19 @@ function Header() {
   const [step, setStep] = useState("send");
   const [mobile, setMobile] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const [isClient, setIsClient] = useState(false);
 
+  const router = useRouter();
+
+  const queryClient = useQueryClient();
   const {
     data: user,
-    isLoading,
-    isError,
   } = useQuery({
     queryKey: ["profile"],
     queryFn: getProfile,
   });
+
+  
 
   useEffect(() => {
     setIsClient(true);
@@ -55,7 +58,8 @@ function Header() {
       "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie =
       "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.reload();
+    queryClient.removeQueries(["profile"]);
+    router.push("/")
   };
 
   return (

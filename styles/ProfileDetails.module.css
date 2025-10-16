@@ -41,3 +41,10 @@
   padding: 10px;
 }
 
+@media(max-width : 390px){
+  .accunt_info , .personal_info , .bank_info{
+    min-width: 390px;
+    padding: 0;
+  }
+ 
+}

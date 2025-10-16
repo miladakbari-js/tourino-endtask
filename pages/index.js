@@ -5,6 +5,8 @@ import AllTours from "@/components/templates/AllTours";
 import TellBanner from "@/components/templates/TellBanner";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
+import WhyTourino from "@/components/templates/WhyTourino";
+import Charter from "@/components/templates/Charter";
 
 export default function Home() {
   const [searchTours , setSearchTours] = useState(null)
@@ -27,6 +29,8 @@ export default function Home() {
           <SearchBox tours={tours} setSearchTours={setSearchTours}/>
           <AllTours tours={searchTours ?? tours} />
           <TellBanner/>
+          <WhyTourino/>
+          <Charter/>
         </div>
       )}
     </main>

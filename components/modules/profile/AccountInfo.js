@@ -34,16 +34,16 @@ export function AccountInfo({ data, editEmail, setEditEmail }) {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <h4>اطلاعات حساب کاربری</h4>
       <div className={styles.actions_acount}>
         <div className={styles.information}>
           <span>شماره موبایل</span>
-          <p>{data.mobile}</p>
+          <p>{data?.mobile}</p>
         </div>
         {editEmail ? (
-          <>
-            <div className={styles.information}>
+          <div>
+            <div className={styles.email_information}>
               <span>ایمیل</span>
               {data.email ? <p>{data.email}</p> : <p>-</p>}
             </div>
@@ -54,7 +54,7 @@ export function AccountInfo({ data, editEmail, setEditEmail }) {
               <img src="/edit.svg" alt="Edit_icon" />
               افزودن
             </button>
-          </>
+          </div>
         ) : (
           <div className={styles.edit_form}>
           <form onSubmit={handleSubmit(emailHandler)}>
@@ -95,6 +95,6 @@ export function AccountInfo({ data, editEmail, setEditEmail }) {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

@@ -87,7 +87,7 @@ function CheckOtp({ mobile, onBack, setShowModal }) {
 
   const onSubmit = async (data) => {
     try {
-      const res = await checkOtp(data.mobile, data.code);
+      const res =await checkOtp(data.mobile, data.code);
       console.log("checkOtp response:", res);
       setCookie(res);
 

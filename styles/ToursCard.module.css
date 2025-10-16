@@ -36,16 +36,19 @@
     align-items: center;
     justify-content: space-between;
 }
-.price a{
+.price button{
     width: 65px;
     height: 30px;
     text-align: center;
     color: #fff;
+    border: none;
     border-radius: 8px;
     background-color: var(--color-primary);
+    cursor: pointer;
     transition: all ease-in-out 0.2s;
 }
-.price a:hover{
+.price button:hover{
+    transform: scale(1.05);
     box-shadow: 1px 1px 5px 1px var(--color-text);
 }
 .price span{
