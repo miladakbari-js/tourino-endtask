@@ -1,9 +1,9 @@
-"use client";
+
 import Link from "next/link";
 import styles from "../../styles/Header.module.css";
 import Modal from "../ui/Modal";
-import SendOtp from "@/pages/auth/send-otp";
-import CheckOtp from "@/pages/auth/check-otp";
+import SendOtp from "@/components/ui/send-otp";
+import CheckOtp from "@/components/ui/check-otp";
 import { useEffect, useState } from "react";
 import {  useQuery, useQueryClient } from "@tanstack/react-query";
 import { getProfile } from "@/services/auth";
@@ -59,7 +59,8 @@ function Header() {
     document.cookie =
       "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     queryClient.removeQueries(["profile"]);
-    router.push("/")
+    router.push("/");
+    queryClient.invalidateQueries(["profile"]);
   };
 
   return (

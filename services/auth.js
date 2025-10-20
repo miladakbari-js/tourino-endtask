@@ -1,4 +1,7 @@
+
+import { useRouter } from "next/router";
 import api from "./api";
+
 
 const sendOtp = async (mobile) => {
   try {
@@ -20,6 +23,7 @@ const checkOtp = async (mobile, code) => {
 };
 
 const refreshToken = async (refreshToken) => {
+  
   try {
     const { data } = await api.post("/auth/refresh-token", { refreshToken });
     return data;
@@ -34,7 +38,15 @@ const getProfile = async () => {
     const { data } = await api.get("/user/profile");
     return data;
   } catch (err) {
-    console.log(err.message);
+    if (err.message === "Invalid token") {
+     document.cookie =
+      "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+
+  
+
     return null;
   }
 };
@@ -64,14 +76,14 @@ const putBasket = async (tourId) => {
     const { data } = await api.put(`/basket/${tourId}`);
     return data;
   } catch (err) {
-    console.log(err.message);
+    
     throw err;
   }
 };
 
 const orderTour = async (form) => {
   try {
-    const { data } = await api.post("/order",form);
+    const { data } = await api.post("/order", form);
     return data;
   } catch (err) {
     console.log(err.message);
@@ -79,27 +91,26 @@ const orderTour = async (form) => {
   }
 };
 
-
-const getMyTours = async()=>{
+const getMyTours = async () => {
   try {
-    const {data} = await api.get("/user/tours");
+    const { data } = await api.get("/user/tours");
     console.log(data);
-    return data
+    return data;
   } catch (err) {
     console.log(err);
-    throw err
+    throw err;
   }
-}
+};
 
-const getTransactions = async () =>{
+const getTransactions = async () => {
   try {
-    const {data} = await api.get("/user/transactions");
-    return data
+    const { data } = await api.get("/user/transactions");
+    return data;
   } catch (err) {
     console.log(err);
-    throw err
+    throw err;
   }
-}
+};
 
 export {
   sendOtp,
@@ -111,5 +122,5 @@ export {
   putBasket,
   orderTour,
   getMyTours,
-  getTransactions
+  getTransactions,
 };

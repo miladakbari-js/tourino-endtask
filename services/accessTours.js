@@ -1,11 +1,16 @@
+
+
 import api from "./api";
 
+
 const fetchTours = async () => {
+  
   try {
     const { data } = await api.get("/tour");
     return data;
   } catch (err) {
     console.log(err.message);
+   
     throw err;
   }
 };

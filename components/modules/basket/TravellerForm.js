@@ -14,8 +14,9 @@ function TravellerForm({ setTravellerData }) {
   });
 
   useEffect(() => {
-    setTravellerData(formData);
-  }, [formData]);
+  const timeout = setTimeout(() => setTravellerData(formData), 300);
+  return () => clearTimeout(timeout);
+}, [formData]);
 
   return (
     <div className={styles.container}>
@@ -48,6 +49,7 @@ function TravellerForm({ setTravellerData }) {
             calendar={persian}
             locale={persian_fa}
             onChange={(date) => {
+              if (!date) return;
               const formatted = moment(date?.toDate())
                 .locale("fa")
                 .format("YYYY-MM-DD");

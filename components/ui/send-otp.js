@@ -1,4 +1,4 @@
-"use client";
+
 import { sendOtp } from "@/services/auth";
 import styles from "@/styles/SendOtp.module.css";
 import toast from "react-hot-toast";

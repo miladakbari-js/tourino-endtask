@@ -42,8 +42,10 @@ api.interceptors.response.use(
         return api(originalRequest);
       }
     } else {
-      setCookie("accessToken", "", 0);
-      setCookie("refreshToken", "", 0);
+      document.cookie =
+      "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }
 
     return Promise.reject(error?.response?.data);
