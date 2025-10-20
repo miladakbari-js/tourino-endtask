@@ -1,4 +1,4 @@
-"use client";
+
 import { checkOtp } from "@/services/auth";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -65,6 +65,10 @@ function CheckOtp({ mobile, onBack, setShowModal }) {
       inputsRef.current[index - 1].focus();
     }
   };
+    const handlePaste = (e) => {
+  const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
+  setValue("code", pasted);
+};
 
   const renderInputs = () => {
     const otpArray = otpValue.split("");
@@ -80,6 +84,7 @@ function CheckOtp({ mobile, onBack, setShowModal }) {
           value={otpArray[index] || ""}
           onChange={(e) => handleChange(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
+          onPaste={handlePaste}
           ref={(el) => (inputsRef.current[index] = el)}
         />
       ));
@@ -106,6 +111,8 @@ function CheckOtp({ mobile, onBack, setShowModal }) {
     const s = seconds % 60;
     return `${m}:${s < 10 ? "0" + s : s}`;
   };
+
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.container}>

@@ -1,20 +1,12 @@
 .container {
-  width:100%;
+  width: fit-content;
   height: fit-content;
   display: flex;
   flex-direction: row;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
-.right  {
-  width: 50%;
 
-}
-.left{
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  width: 50%;
-}
+
 .question_icon {
   display: none;
 }
@@ -23,7 +15,6 @@
   align-items: center;
   gap: 20px;
   width: fit-content;
-
 }
 .whytourino h4 {
   font-size: 35px;
@@ -42,7 +33,6 @@
   align-items: center;
   color: #fff;
   font-size: 38px;
-  
 }
 .question_text {
   width: 480px;
@@ -67,28 +57,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 @media (max-width: 390px) {
-    .container{
-        min-width: 390px;
-        
-      margin-bottom: 40px;
-    }
-  .question {
-    display: none;
-  }
-  .question_icon{
-    display: block;
-  }
-  .question_text{
-    display: none;
-  }
-  .left{
-    width: 100%;
-    display: flex;
+  .container {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+  }
+.slider_text{
+  display: none;
+}
+  .right, .left {
+    width: 100%;
+  }
+
+  .left {
+    margin-top: 15px;
   }
 }

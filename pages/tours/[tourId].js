@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { fetchToursById } from "@/services/accessTours";
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import styles from "../../styles/ToursDetail.module.css";
@@ -20,7 +21,7 @@ function details({ tourId }) {
     queryKey: ["tour", tourId],
     queryFn: () => fetchToursById(tourId),
   });
- 
+
   const router = useRouter();
 
   const diffTime = new Date(tours?.endDate) - new Date(tours?.startDate);
@@ -29,19 +30,21 @@ function details({ tourId }) {
   if (isLoading) return <p>در حال بارگذاری...</p>;
   if (error) return <p>خطا در دریافت اطلاعات</p>;
 
-  const shoppingHandler =async (tourId)=>{
-   try {
-    const data = await putBasket(tourId);
-    toast.success(data.message)
-    router.push("/basket")
-   } catch (err) {
-    toast.error("خطا در عملیات رزرواسیون")
-   }
-   
-   
-  }
+  const shoppingHandler = async (tourId) => {
+    try {
+      const data = await putBasket(tourId);
+      toast.success(data.message);
+      router.push("/basket");
+    } catch (err) {
+      toast.error("خطا در عملیات رزرواسیون");
+    }
+  };
   return (
     <div className={styles.details_body}>
+      <Head>
+        <title>تورینو | جزئیات تور</title>
+        <meta name="description" content="نمایش جزئیات تور" />
+      </Head>
       <div className={styles.container}>
         <div className={styles.up}>
           <img src={tours?.image} />
@@ -81,7 +84,9 @@ function details({ tourId }) {
                 {tours?.price} <span>تومان</span>
               </p>
 
-              <button onClick={()=>shoppingHandler(tourId)}>رزرو و خرید</button>
+              <button onClick={() => shoppingHandler(tourId)}>
+                رزرو و خرید
+              </button>
             </div>
           </div>
         </div>
@@ -136,7 +141,7 @@ function details({ tourId }) {
 
 export default details;
 
-export async function getServerSideProps(context) {
+export const getServerSideProps = withAuth(async (context) => {
   const { tourId } = context.params;
   console.log(tourId);
   const queryClient = new QueryClient();
@@ -152,4 +157,4 @@ export async function getServerSideProps(context) {
       tourId,
     },
   };
-}
+});

@@ -25,8 +25,11 @@ function ToursCard({ tour }) {
       toast.success("تور با موفقیت به سبد خرید اضافه شد ");
       router.push("/basket")
     } catch (err) {
-      const msg = err.response?.data?.message || "خطا در افزودن تور";
-      toast.error(msg);
+      
+      if (err.message === "Access token required"){
+        return toast.error("ورود به تورینو برای رزرو الزامیست")
+      }
+      
     }
   };
 

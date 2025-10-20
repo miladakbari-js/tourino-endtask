@@ -1,9 +1,10 @@
-"use client";
+
 import { useQuery } from "@tanstack/react-query";
 import MyToursCard from "@/components/modules/tours/MyToursCard";
 import { getMyTours } from "@/services/auth";
 import { ClipLoader } from "react-spinners";
 import styles from "@/styles/mytours.module.css"
+import { withAuth } from "@/utils/withAuth";
 
 function MyTours({ initialTours }) {
   const { data: tours, isLoading } = useQuery({
@@ -27,7 +28,7 @@ function MyTours({ initialTours }) {
 
 export default MyTours;
 
-export async function getServerSideProps() {
+export const getServerSideProps = withAuth(async (context) => {
   try {
     const toursData = await getMyTours();
 
@@ -44,4 +45,4 @@ export async function getServerSideProps() {
       },
     };
   }
-}
+})

@@ -1,6 +1,7 @@
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { fetchTours } from "@/services/accessTours";
 import AllTours from "@/components/templates/AllTours";
+import { withAuth } from "@/utils/withAuth";
 
 function index() {
   const {
@@ -24,7 +25,9 @@ function index() {
 
 export default index;
 
-export async function getServerSideProps() {
+
+
+export const getServerSideProps = withAuth(async (context) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
@@ -37,4 +40,4 @@ export async function getServerSideProps() {
       dehydratedState: dehydrate(queryClient),
     },
   };
-}
+});

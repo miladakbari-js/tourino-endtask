@@ -2,6 +2,7 @@ import TransectionsCard from "@/components/modules/transections/TransectionsCard
 import { getTransactions } from "@/services/auth";
 import { useQuery } from "@tanstack/react-query";
 import styles from "@/styles/Transections.module.css";
+import { withAuth } from "@/utils/withAuth";
 
 function Transactions() {
   const {
@@ -37,5 +38,7 @@ function Transactions() {
     </div>
   );
 }
+
+export const getServerSideProps = withAuth();
 
 export default Transactions;

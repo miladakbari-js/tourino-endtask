@@ -1,36 +1,36 @@
 .container {
-  width: 70%;
-  height: fit-content;
+  width: 50%;
+  height: 450px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items:flex-start;
+  position: absolute;
 }
 .pics {
   display: flex;
-
+  
 }
 
 .box1,
 .box2,
 .box3,
 .box4 {
-
   border-radius: 12px;
-  
+  display: inline-block;
 }
 .box1 {
-  
+  position: relative;
   width: 250px;
   height: 400px;
   z-index: 4;
+  right: 200px;
 }
 .box2 {
   width: 150px;
   height: 350px;
   z-index: 3;
   position: relative;
-  right: -100px;
+  right: 160px;
   top: 25px;
 }
 .box3 {
@@ -38,7 +38,7 @@
   height: 300px;
   z-index: 2;
   position: relative;
-  right: -190px;
+  right: 80px;
   top: 50px;
 }
 .box4 {
@@ -46,7 +46,7 @@
   height: 250px;
   z-index: 1;
   position: relative;
-  right: -260px;
+  right: 0px;
   top: 70px;
 }
 
@@ -58,9 +58,10 @@
   cursor: pointer;
 }
 .buttons {
-  width: 100%;
+  width: 400px;
   display: flex;
-  margin-top: 20px;
+  justify-content: flex-end;
+
 }
 .buttons img {
   width: 30px;
@@ -68,4 +69,38 @@
 }
 .picleft {
   transform: rotate(180deg);
+}
+@media (max-width:390px){
+.container{
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end; 
+  }
+
+  .pics {
+    justify-content: flex-end; 
+  }
+
+
+  .box1, .box2, .box3, .box4 {
+   width: fit-content; 
+  }
+  .box1{
+    right: 0;
+  }
+  .box2{
+    right: -50px;
+  }
+  .box3{
+    right: -80px;
+  }
+  .box4{
+    right: -100px;
+  }
+  .buttons{
+    justify-content: flex-start;
+  }
 }
