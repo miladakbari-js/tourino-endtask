@@ -7,7 +7,6 @@ function Modal({ isOpen,  children }) {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
-       
         {children}
       </div>
     </div>

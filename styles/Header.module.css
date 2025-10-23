@@ -166,9 +166,11 @@
 }
 
 @media (max-width: 390px) {
-  .container{
-    min-width: 390px;
-   
+  .container {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 370px;
+    justify-content: space-between;
   }
   .profileLoggedIn {
     width: auto;
@@ -182,18 +184,13 @@
     top: 45px;
     width: 160px;
   }
+  .hamburger {
+    margin-left: 250px;
+  }
 
+  .profile,
+  .menuItem,
   .logo {
-    display: none;
-  }
-  .menuItem {
-    display: none;
-  }
-  .container {
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
-  .profile {
     display: none;
   }
   .signin_button {
@@ -202,5 +199,12 @@
 
   .hamburger {
     display: flex;
+    margin-left: 200px;
+  }
+  .dropdownMenu{
+    width: 170px;
+  }
+  .mobileMenu{
+    height: 500px;
   }
 }

@@ -100,3 +100,23 @@
   color: red;
   font-size: 13px;
 }
+@media (max-width: 390px){
+  .container{
+    width: 358px;
+    gap: 10px;
+  }
+  .container h4{
+
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+margin-right: 120px;
+}
+
+.head button{
+  margin: 5px;
+}
+.submiBtutton{
+  width: 300px;
+}
+}

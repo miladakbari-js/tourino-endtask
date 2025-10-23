@@ -29,7 +29,6 @@ function ToursCard({ tour }) {
       if (err.message === "Access token required"){
         return toast.error("ورود به تورینو برای رزرو الزامیست")
       }
-      
     }
   };
 

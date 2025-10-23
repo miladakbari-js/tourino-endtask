@@ -9,6 +9,8 @@ import WhyTourino from "@/components/templates/WhyTourino";
 import Charter from "@/components/templates/Charter";
 
 import { useRouter } from "next/router";
+import TourListSkeleton from "@/components/ui/TourListSkeleton";
+import toast from "react-hot-toast";
 
 export default function Home() {
   const [searchTours , setSearchTours] = useState(null)
@@ -25,7 +27,8 @@ const router = useRouter()
     }
   }, [isError]);
 
-  if (isError) return <p>در حال ارتباط . .</p>
+
+  if (isError) return toast.error("خطا در بارگذاری!!!")
  
   return (
     <main className={styles.container}>
@@ -35,7 +38,7 @@ const router = useRouter()
         <span>تورینو</span> برگزار کننده بهترین تور های داخلی و خارجی
       </p>
       {isLoading ? (
-        <p>در حال بارگذاری ...</p>
+        <TourListSkeleton/>
       ) : (
         <div className={styles.components}>
           <SearchBox tours={tours} setSearchTours={setSearchTours}/>

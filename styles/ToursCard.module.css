@@ -57,3 +57,9 @@
 .price p{
     color: var(--color-text);
 }
+@media(max-width:390px){
+    .container{
+        width: 280px;
+        margin: auto;
+    }
+}

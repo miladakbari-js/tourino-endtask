@@ -7,7 +7,7 @@
 body {
   display: flex;
   flex-direction: column;
-  max-width: 1400px;
+  max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
@@ -37,8 +37,6 @@ input:focus {
   justify-content: center !important;
 }
 
-
-
 .rmdp-day span {
   border-radius: 50% !important;
   font-size: 15px !important;
@@ -52,6 +50,5 @@ input:focus {
   background-color: var(--color-primary) !important;
   border-radius: 50% !important;
 }
-
 
 
