@@ -148,7 +148,6 @@
     padding: 5px;
   }
   .bottom {
-    background-color: azure;
     flex-direction: column;
   }
   .name,

@@ -101,3 +101,54 @@
   font-size: 12px !important;
   color: red !important;
 }
+@media(max-width:390px){
+.name,
+.melli,
+.sheba {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.name div,
+.melli div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+  height: 25px;
+}
+.bottom{
+  flex-direction: column;
+}
+.edit_input{
+  flex-direction: column;
+}
+.edit_list input{
+  height: 35px;
+}
+.buttons {
+  width: 100%;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.enter_button {
+  width: 120px;
+  height: 35px;
+
+}
+
+.cancel_button {
+  width: 120px;
+  height: 35px;
+
+}
+
+.edit_list{
+  gap: 0;
+}
+.inputs{
+  height: 40px;
+
+}
+
+}

@@ -89,7 +89,7 @@ function CheckOtp({ mobile, onBack, setShowModal }) {
         />
       ));
   };
-
+  
   const onSubmit = async (data) => {
     try {
       const res =await checkOtp(data.mobile, data.code);

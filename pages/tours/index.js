@@ -13,7 +13,7 @@ function index() {
     queryFn: fetchTours,
   });
 
-  if (isLoading) return <p>در حال بارگذاری...</p>;
+  if (isLoading) return <h1>در حال بارگذاری...</h1>;
   if (error) return <p>خطا در دریافت اطلاعات</p>;
 
   return (

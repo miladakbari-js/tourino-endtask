@@ -6,6 +6,7 @@ import Select, { components } from "react-select";
 import { useEffect, useState } from "react";
 import { convertCityName } from "@/utils/helpers";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 function SearchBox({ tours, setSearchTours }) {
   const [origin, setOrigin] = useState(null);
@@ -28,25 +29,13 @@ function SearchBox({ tours, setSearchTours }) {
   useEffect(() => {
     if (!origin && !destination && !searchDate) {
       setSearchTours(null);
-     
     }
   }, [origin, destination, searchDate]);
-
-  const CustomPlaceholder = (props) => (
-    <components.Placeholder {...props}>
-      <div className={styles.placeholder}>
-        {props.selectProps.placeholderIcon && (
-          <img src={props.selectProps.placeholderIcon} alt="icon" />
-        )}
-        <span>{props.children}</span>
-      </div>
-    </components.Placeholder>
-  );
 
   const handleSearch = () => {
     if (!origin && !destination && !searchDate) {
       setSearchTours(null);
-       toast.error("برای جستجو حداقل یکی از فیلدهاانتخاب شوند")
+      toast.error("برای جستجو حداقل یکی از فیلدها انتخاب شود");
       return;
     }
     let filteredTours = [...tours];
@@ -66,7 +55,6 @@ function SearchBox({ tours, setSearchTours }) {
 
     if (searchDate) {
       if (Array.isArray(searchDate) && searchDate.length === 2) {
-
         const fromDate = searchDate[0].toDate();
         const toDate = searchDate[1].toDate();
 
@@ -75,7 +63,6 @@ function SearchBox({ tours, setSearchTours }) {
           return tourDate >= fromDate && tourDate <= toDate;
         });
       } else {
-     
         const selectedDate = searchDate.toDate();
         filteredTours = filteredTours.filter((t) => {
           const tourDate = new Date(t.startDate);
@@ -92,65 +79,55 @@ function SearchBox({ tours, setSearchTours }) {
 
   return (
     <div className={styles.container}>
-      <Select
-        options={originOptions}
-        value={origin}
-        onChange={(option) => setOrigin(option)}
-        placeholder="مبدا"
-        placeholderIcon="/location.svg"
-        isClearable
-        isRtl
-        components={{
-          Placeholder: CustomPlaceholder,
-          DropdownIndicator: () => null,
-        }}
-        styles={{
-          control: (base) => ({
-            ...base,
-            width: "200px",
-            border: "none",
-            boxShadow: "none",
-            minHeight: "45px",
-            fontSize: "14px",
-            cursor:"pointer",
-          }),
-          menu: (base) => ({
-            ...base,
-            fontSize: "14px",
-            zIndex: 9999,
-          }),
-        }}
-      />
+      <div className={styles.selectBox}>
+        
+      <Image src="/location.svg" width={20} height={20} />
+      <select
+        value={origin?.value || ""}
+        onChange={(e) =>
+          setOrigin(
+            e.target.value
+            ? {
+              value: e.target.value,
+              label: convertCityName(e.target.value),
+            }
+            : null
+          )
+        }
+        >
+        <option value="">مبداء</option>
+        {origins.map((originCity) => (
+          <option key={originCity} value={originCity}>
+            {convertCityName(originCity)}
+          </option>
+        ))}
+      </select>
+        </div>
 
-      <Select
-        options={destinationOptions}
-        value={destination}
-        onChange={(option) => setDestination(option)}
-        placeholder="مقصد"
-        placeholderIcon="/destination.svg"
-        isClearable
-        isRtl
-        components={{
-          Placeholder: CustomPlaceholder,
-          DropdownIndicator: () => null,
-        }}
-        styles={{
-          control: (base) => ({
-            ...base,
-            width: "200px",
-            border: "none",
-            boxShadow: "none",
-            minHeight: "45px",
-            fontSize: "14px",
-            cursor:"pointer",
-          }),
-          menu: (base) => ({
-            ...base,
-            fontSize: "14px",
-            zIndex: 9999,
-          }),
-        }}
-      />
+<div className={styles.selectBox}>
+
+      <Image src="/destination.svg" width={20} height={20} />
+      <select
+        value={destination?.value || ""}
+        onChange={(e) =>
+          setDestination(
+            e.target.value
+            ? {
+              value: e.target.value,
+              label: convertCityName(e.target.value),
+            }
+            : null
+          )
+        }
+        >
+        <option value="">مقصد</option>
+        {destinations.map((destCity) => (
+          <option key={destCity} value={destCity}>
+            {convertCityName(destCity)}
+          </option>
+        ))}
+      </select>
+        </div>
 
       <DatePicker
         range
@@ -166,14 +143,13 @@ function SearchBox({ tours, setSearchTours }) {
         )}
       />
 
-      {searchDate && (
-        <button
-          onClick={() => setSearchDate(null)}
-          className={styles.clearButton}
-        >
-          ✖ حذف بازه
-        </button>
-      )}
+      <div className={styles.clearButton}>
+        {searchDate && (
+          <button title="حذف بازه" onClick={() => setSearchDate(null)}>
+            ✖
+          </button>
+        )}
+      </div>
 
       <button className={styles.search_button} onClick={handleSearch}>
         جستجو

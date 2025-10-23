@@ -10,11 +10,16 @@
 }
 .modal {
   padding: 32px 28px;
-
   position: relative;
   text-align: center;
 }
 .closeBtn {
   position: relative;
   right: 500px;
+}
+@media (max-width: 390px) {
+  .container {
+    position: absolute;
+    height: auto;
+  }
 }

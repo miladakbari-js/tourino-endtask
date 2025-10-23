@@ -4,7 +4,7 @@
   height: fit-content;
 }
 .banner {
-  max-width: 1265px;
+  width: 100%;
   height: fit-content;
 }
 .banner_text {
@@ -18,7 +18,7 @@
   color: var(--color-primary);
 }
 .components {
-  padding: 0 50px;
+  padding: 0 0px;
   margin: 0 auto;
 }
 

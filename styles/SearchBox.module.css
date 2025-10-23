@@ -1,9 +1,9 @@
 .container {
-    border: 1px solid var(--color-text2);
-    border-radius: 18px;
-    height: 70px;
-    margin:50px auto;
-    width: 800px;
+  border: 1px solid var(--color-text2);
+  border-radius: 18px;
+  height: 70px;
+  margin: 50px auto;
+  width: 900px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,19 +12,34 @@
 }
 
 
-.container > * {
-  min-width: 150px;
+.container select{
+ appearance: none;
+  width: 200px;
+  border: none;
+  height: 40px;
+  padding: 2px;
+  font-size: 14px;
+  cursor: pointer;
+ border-left: 2px solid var(--color-text2);
+}
+.container select:focus{
+  outline: none;
 }
 
-
+.selectBox{
+display: flex;
+align-items: center;
+gap: 5px;
+}
 .datepicker_button {
-  width: 100%;
+  
+  width: 140px;
   height: 45px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
   gap: 8px;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 6px;
   background: #fff;
   cursor: pointer;
@@ -32,11 +47,25 @@
   color: var(--color-text);
 }
 
+.clearButton{
+  width: 20px;
+  height: 20px;
+  border: none;
+  
+}
+.clearButton button{
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: red;
+  cursor: pointer;
+}
+
 .datepicker_button img {
   width: 16px;
   height: 16px;
 }
-
 
 .search_button {
   width: 140px;
@@ -54,28 +83,50 @@
   box-shadow: 1px 1px 5px 1px var(--color-text);
 }
 
-
 @media (max-width: 390px) {
   .container {
-    width: 390px;
+    width: fit-content;
     height: fit-content;
     border: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* وسط‌چین افقی */
+    justify-content: center; /* وسط‌چین عمودی */
     gap: 10px;
+    margin: 0 auto; /* برای وسط قرار گرفتن خود container */
+    padding: 10px;
   }
 
-  .container > :nth-child(1),
-  .container > :nth-child(2) {
-    grid-column: span 1;
+  .container select {
+    width: 200px;
+    text-align: center;
+    border: none;
+    
+  }
+  .selectBox{
+    border: 1px solid var(--color-text2);
+    border-radius: 5px;
+    padding: 5px;
   }
 
-
-  .container > :nth-child(3),
-  .container > :nth-child(4) {
-    grid-column: span 2;
+  .datepicker_button {
+    width: 240px;
+    justify-content: center;
+    height: 50px;
+    border: 1px solid var(--color-text2);
+    
   }
-  .search_button{
-    width: 100%;
+
+  .search_button {
+    width: 200px;
+  }
+
+  .selectBox {
+    justify-content: center;
+  }
+
+  .clearButton {
+    display: flex;
+    justify-content: center;
   }
 }

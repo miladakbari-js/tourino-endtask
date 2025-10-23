@@ -11,6 +11,7 @@ import {
 import { putBasket } from "@/services/auth";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
+import { withAuth } from "@/utils/withAuth";
 
 function details({ tourId }) {
   const {

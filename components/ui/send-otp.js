@@ -36,8 +36,8 @@ function SendOtp({ onOtpSent , onClose}) {
     <div className={styles.container}>
       <div className={styles.head}>
 
-      <button onClick={onClose}>X</button>
       <h4>ورود به تورینو</h4>
+      <button onClick={onClose}>X</button>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.mobile}>
